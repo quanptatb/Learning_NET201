@@ -10,6 +10,11 @@ public class HomeController : Controller
     {
         return View();
     }
+    public IActionResult OpenPicture()
+    {
+        string imgPath = "/images/pic.png";
+        return File(imgPath, "image/png");
+    }
 
     public IActionResult Privacy()
     {
