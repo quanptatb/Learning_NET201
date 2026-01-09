@@ -25,6 +25,7 @@ namespace Bai01.DAL
             _context.SaveChanges();
         }
         //update
+        //sử dụng [FromForm].
         public void UpdateProduct(Product product)
         {
             _context.Products.Update(product);

@@ -19,41 +19,55 @@ namespace Bai01.Controllers
         {
             _productDAL = productdal;
         }
+        //get all
         [HttpGet("Index")]
         public IActionResult Index()
         {
             var products = _productDAL.GetAllProducts();
             return View(products);
         }
+        //create
         [HttpGet("Create")]
         public IActionResult Create()
         {
             return View();
         }
         [HttpPost("Create")]
-        public IActionResult Create(Product product)
+        public IActionResult Create([FromForm] Product product)
         {
             _productDAL.CreateProduct(product);
             return RedirectToAction("Index");
         }
+        //update
+        //sử dụng [FromForm].
         [HttpGet("Edit/{id}")]
         public IActionResult Edit(int id)
         {
             var product = _productDAL.GetAllProducts().FirstOrDefault(p => p.Id == id);
+            if (product == null)
+            {
+                return NotFound();
+            }
             return View(product);
         }
         [HttpPost("Edit/{id}")]
-        public IActionResult Edit(Product product)
+        public IActionResult Edit(int? id, [FromForm] Product product)
         {
+            if (id.HasValue)
+            {
+                product.Id = id.Value;
+            }
             _productDAL.UpdateProduct(product);
             return RedirectToAction("Index");
         }
+        //delete
         [HttpGet("Delete/{id}")]
         public IActionResult Delete(int id)
         {
             _productDAL.DeleteProduct(id);
             return RedirectToAction("Index");
         }
+        //search by Name, MinPrice and MaxPrice.
         [HttpGet("Search")]
         public async Task<IActionResult> Search([FromQuery] ProductSearch model)
         {
