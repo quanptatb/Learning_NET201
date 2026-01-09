@@ -1,0 +1,10 @@
+D:\Work\Ky8\Block1\NET201\Learning_NET201\Lab02\Bai01\obj\Debug\net10.0\Lab02.csproj.AssemblyReference.cache
+D:\Work\Ky8\Block1\NET201\Learning_NET201\Lab02\Bai01\obj\Debug\net10.0\rpswa.dswa.cache.json
+D:\Work\Ky8\Block1\NET201\Learning_NET201\Lab02\Bai01\obj\Debug\net10.0\Lab02.GeneratedMSBuildEditorConfig.editorconfig
+D:\Work\Ky8\Block1\NET201\Learning_NET201\Lab02\Bai01\obj\Debug\net10.0\Lab02.AssemblyInfoInputs.cache
+D:\Work\Ky8\Block1\NET201\Learning_NET201\Lab02\Bai01\obj\Debug\net10.0\Lab02.AssemblyInfo.cs
+D:\Work\Ky8\Block1\NET201\Learning_NET201\Lab02\Bai01\obj\Debug\net10.0\Lab02.csproj.CoreCompileInputs.cache
+D:\Work\Ky8\Block1\NET201\Learning_NET201\Lab02\Bai01\obj\Debug\net10.0\Lab02.MvcApplicationPartsAssemblyInfo.cache
+D:\Work\Ky8\Block1\NET201\Learning_NET201\Lab02\Bai01\obj\Debug\net10.0\Lab02.RazorAssemblyInfo.cache
+D:\Work\Ky8\Block1\NET201\Learning_NET201\Lab02\Bai01\obj\Debug\net10.0\Lab02.RazorAssemblyInfo.cs
+D:\Work\Ky8\Block1\NET201\Learning_NET201\Lab02\Bai01\obj\Debug\net10.0\Lab02.sourcelink.json
