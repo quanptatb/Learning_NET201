@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Bai01.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Bai01.DAL
 {
@@ -40,22 +41,25 @@ namespace Bai01.DAL
             }
         }
         //search by Name, MinPrice and MaxPrice.
-        public List<Product> SearchProducts(string name, decimal? minPrice, decimal? maxPrice)
+        //sử dụng [FromQuery].
+        public async Task<List<Product>> SearchProducts(ProductSearch model)
         {
             var query = _context.Products.AsQueryable();
-            if (!string.IsNullOrEmpty(name))
+
+            if (!string.IsNullOrEmpty(model.Name))
             {
-                query = query.Where(p => p.Name.Contains(name));
+                query = query.Where(p => p.Name.Contains(model.Name));
             }
-            if (minPrice.HasValue)
+            if (model.MinPrice.HasValue)
             {
-                query = query.Where(p => p.Price >= minPrice.Value);
+                query = query.Where(p => p.Price >= model.MinPrice.Value);
             }
-            if (maxPrice.HasValue)
+            if (model.MaxPrice.HasValue)
             {
-                query = query.Where(p => p.Price <= maxPrice.Value);
+                query = query.Where(p => p.Price <= model.MaxPrice.Value);
             }
-            return query.ToList();
+
+            return await query.ToListAsync();
         }
     }
 }
