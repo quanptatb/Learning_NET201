@@ -10,7 +10,9 @@ namespace Bai01.Models
         // OrderId, CustomerName, OrderDate, và Status.
         public int OrderId { get; set; }
         public string CustomerName { get; set; }
-        public DateTime OrderDate { get; set; }
+        public DateTime OrderDate { get; set; } = DateTime.Now;
         public string Status { get; set; }
+
+        public List<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
     }
 }
