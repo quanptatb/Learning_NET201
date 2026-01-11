@@ -1,0 +1,56 @@
+@model IEnumerable<Bai01.Models.Product>
+@inject IHttpContextAccessor HttpContextAccessor
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+@* search *@
+<form asp-action="Search" method="get" class="form-inline mb-3">
+    <div class="form-group mr-2">
+        <label for="Name" class="mr-2">Name
+        </label>
+        <input type="text" name="Name" class="form-control"
+            value="@HttpContextAccessor.HttpContext.Request.Query["Name"]" />
+    </div>
+    <div class="form-group mr-2">
+        <label for="MinPrice" class="mr-2">Min Price
+        </label>
+        <input type="number" step="0.01" name="MinPrice" class="form-control"
+            value="@HttpContextAccessor.HttpContext.Request.Query["MinPrice"]" />
+    </div>
+    <div class="form-group mr-2">
+        <label for="MaxPrice" class="mr-2">Max Price
+        </label>
+        <input type="number" step="0.01" name="MaxPrice" class="form-control"
+            value="@HttpContextAccessor.HttpContext.Request.Query["MaxPrice"]" />
+    </div>
+    <button type="submit" class="btn btn-secondary">Search</button>
+</form>
+@* display table *@
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Description</td>
+                <td>@item.Price.ToString("C")</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,53 @@
+@model IEnumerable<Bai01.Models.Order>
+@inject IHttpContextAccessor HttpContextAccessor
+
+<h2>Orders</h2>
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Order</a>
+</p>
+@* search *@
+<form asp-action="Search" method="get" class="form-inline mb-3">
+    <div class="form-group mr-2">
+        <label for="StartDate" class="mr-2">Start Date
+        </label>
+        <input type="date" name="StartDate" class="form-control"
+            value="@HttpContextAccessor.HttpContext.Request.Query["StartDate"]" />
+    </div>
+    <div class="form-group mr-2">
+        <label for="EndDate" class="mr-2">End Date
+        </label>
+        <input type="date" name="EndDate" class="form-control"
+            value="@HttpContextAccessor.HttpContext.Request.Query["EndDate"]" />
+    </div>
+    <div class="form-group mr-2">
+        <label for="Status" class="mr-2">Status
+        </label>
+        <input type="text" name="Status" class="form-control"
+            value="@HttpContextAccessor.HttpContext.Request.Query["Status"]" />
+    </div>
+    <button type="submit" class="btn btn-secondary">Search</button>
+</form>
+@* display table *@
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Order Date</th>
+            <th>Status</th>
+            <th>Details Count</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.OrderId</td>
+                <td>@item.CustomerName</td>
+                <td>@item.OrderDate.ToString("yyyy-MM-dd")</td>
+                <td>@item.Status</td>
+                <td>@item.OrderDetails.Count</td>
+            </tr>
+        }
+    </tbody>
+</table>
