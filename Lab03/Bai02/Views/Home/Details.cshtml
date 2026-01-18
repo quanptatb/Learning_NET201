@@ -1,0 +1,35 @@
+@model Bai02.Models.Product
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="~/images/@Model.ImageName" class="img-fluid" alt="@Model.Name">
+        </div>
+
+        <div class="col-md-6">
+            <h4 class="text-muted text-uppercase">@Model.Category?.Name</h4>
+            <h1>@Model.Name</h1>
+
+            <h3 class="my-3">
+                $@Model.Price
+            </h3>
+
+            <div class="mb-3">
+                <span>⭐⭐⭐⭐⭐ 9 reviews</span>
+            </div>
+
+            <button class="btn btn-dark btn-lg w-100 mb-2">ADD TO CART</button>
+            <button class="btn btn-warning btn-lg w-100">BUY IT NOW</button>
+
+            <div class="mt-4">
+                <p>@Model.Description</p>
+            </div>
+
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </div>
+</div>
