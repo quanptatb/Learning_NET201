@@ -1,0 +1,75 @@
+@model Bai02.Models.CreateOrderViewModel
+
+@{
+    ViewData["Title"] = "Tạo đơn hàng mới";
+}
+
+<h2>Tạo đơn hàng mới</h2>
+<hr />
+
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="card mb-3">
+                <div class="card-header">Thông tin đơn hàng</div>
+                <div class="card-body">
+                    <div class="form-group mb-3">
+                        <label asp-for="OrderDate" class="control-label">Ngày đặt hàng</label>
+                        <input asp-for="OrderDate" class="form-control" type="datetime-local" />
+                        <span asp-validation-for="OrderDate" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="CustomerName" class="control-label">Tên khách hàng</label>
+                        <input asp-for="CustomerName" class="form-control" placeholder="Nhập tên khách hàng" />
+                        <span asp-validation-for="CustomerName" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-header">Thông tin sản phẩm</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 form-group mb-3">
+                            <label asp-for="ProductId" class="control-label">Mã sản phẩm (ID)</label>
+                            <input asp-for="ProductId" class="form-control" type="number" />
+                            <span asp-validation-for="ProductId" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6 form-group mb-3">
+                            <label asp-for="ProductName" class="control-label">Tên sản phẩm</label>
+                            <input asp-for="ProductName" class="form-control" />
+                            <span asp-validation-for="ProductName" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 form-group mb-3">
+                            <label asp-for="Quantity" class="control-label">Số lượng</label>
+                            <input asp-for="Quantity" class="form-control" type="number" min="1" />
+                            <span asp-validation-for="Quantity" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6 form-group mb-3">
+                            <label asp-for="UnitPrice" class="control-label">Đơn giá</label>
+                            <input asp-for="UnitPrice" class="form-control" type="number" />
+                            <span asp-validation-for="UnitPrice" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Tạo đơn hàng" class="btn btn-success" />
+                <a asp-action="Index" class="btn btn-secondary">Hủy bỏ</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
