@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Bai04.Models.Student>
+
+<h2>@ViewBag.Title</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Student Name</th>
+            <th>Enrolled Courses</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>@student.Name</td>
+                <td>
+                    <ul>
+                        @foreach (var enrollment in student.Enrollments)
+                        {
+                            <li>@enrollment.Course.Title</li>
+                        }
+                    </ul>
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@student.StudentId">View Lazy Load Detail</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="mt-3">
+    <a asp-action="RawSql" class="btn btn-warning">Test Raw SQL</a>
+    <a asp-action="Index" class="btn btn-primary">Test Eager Loading</a>
+</div>

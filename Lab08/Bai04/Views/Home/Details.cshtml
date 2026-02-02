@@ -1,0 +1,18 @@
+@model Bai04.Models.Student
+
+<h3>Student Details (Lazy Loading Demo)</h3>
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">@Model.Name</h4>
+        <p class="card-text">Courses:</p>
+        <ul>
+            @foreach (var enrollment in Model.Enrollments)
+            {
+                <li>@enrollment.Course.Title</li>
+            }
+        </ul>
+    </div>
+</div>
+<br />
+<a asp-action="Index">Back to List</a>
